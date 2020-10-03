@@ -1,0 +1,11 @@
+FROM einsteinx2/dcdev-kos-toolchain
+
+RUN apk add \
+    g++ \
+    gcc \
+    python3 && \
+  mkdir -p /sm64
+
+WORKDIR /sm64
+
+CMD echo 'usage: docker run --rm -v "$(pwd)":/sm64 sm64 make TARGET_DC=1 scramble VERSION=${VERSION:-us} -j4\n'
